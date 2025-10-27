@@ -10,6 +10,7 @@ export const siteConfig = {
 		'Portfolio showcasing my projects over my studies at USI.',
 	url: 'https://jimena.github.com',
 	ogImage: '/og-image.png',
+	profileImage: '/images/profile/pic.png', // Path to profile image
 
 	// Personal/Social links
 	links: {

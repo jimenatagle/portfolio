@@ -2,6 +2,7 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { ThumbsUp } from '@lucide/svelte/icons';
 	import { likesStore } from '$lib/stores/likes.svelte.js';
+	import { getTagColor } from '$lib/config.js';
 	import { onMount } from 'svelte';
 
 	let { project } = $props();
@@ -54,7 +55,7 @@
 					<div class="mb-4 flex flex-wrap gap-2">
 						{#each project.tags as tag}
 							<span
-								class="rounded-full bg-muted px-3 py-1 text-sm text-muted-foreground"
+								class="rounded-full px-3 py-1 text-sm {getTagColor(tag)}"
 							>
 								{tag}
 							</span>
@@ -148,7 +149,7 @@
 					<div class="flex flex-wrap gap-2">
 						{#each project.tags as tag}
 							<span
-								class="rounded-full bg-muted px-3 py-1 text-sm text-muted-foreground"
+								class="rounded-full px-3 py-1 text-sm {getTagColor(tag)}"
 							>
 								{tag}
 							</span>
@@ -159,8 +160,9 @@
 			</div>
 		</div>
 
-		{#if project.link || project.github}
-			<Dialog.Footer class="flex gap-3 border-t border-border bg-background px-6 py-4">
+		<Dialog.Footer class="flex items-center justify-between gap-3 border-t border-border bg-background px-6 py-4">
+			<!-- Project Links -->
+			<div class="flex gap-3">
 				{#if project.link}
 					<a
 						href={project.link}
@@ -199,7 +201,20 @@
 						GitHub
 					</a>
 				{/if}
-			</Dialog.Footer>
-		{/if}
+			</div>
+
+			<!-- Thumbs Up Button -->
+			<button
+				onclick={handleLike}
+				disabled={hasLiked}
+				class="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-all {hasLiked
+					? 'bg-primary/10 text-primary cursor-not-allowed'
+					: 'bg-muted hover:bg-primary/10 hover:text-primary text-muted-foreground'}"
+				title={hasLiked ? 'Already liked' : 'Like this project'}
+			>
+				<ThumbsUp class="h-4 w-4" fill={hasLiked ? 'currentColor' : 'none'} />
+				<span>{likesStore.getLikes(projectId)}</span>
+			</button>
+		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

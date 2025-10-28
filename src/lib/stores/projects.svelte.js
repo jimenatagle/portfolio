@@ -19,11 +19,11 @@ export const projects = [
                 'GA proved to be a robust, effective and flexible method for resource allocation in distribution systems.'
             ]
         },
-        tags: ['stochastic methods', 'genetic algorithm', 'evolutionary computation', 'optimization']
+        tags: ['stochastic-methods', 'genetic-algorithm', 'evolutionary-computation', 'optimization']
     },
     {
         title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j)',
-        image: 'https://via.placeholder.com/300',
+        image: 'images/projects/project_1.png',
         details: {
             goal: 'Model user-product interactions to answer behavioral questions (funnels, “also bought,” price dynamics) and inform sales/inventory strategy.',
             challenges: [

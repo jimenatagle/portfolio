@@ -4,7 +4,7 @@
 </script>
 
 <section id="projects" class="px-4 py-20">
-	<div class="mx-auto max-w-7xl">
+	<div class="mx-auto max-w-7xl md:px-18">
 		<div class="mb-12 text-center">
 			<h2 class="mb-8 text-4xl font-bold text-foreground">Projects</h2>
 		</div>

@@ -3,7 +3,7 @@
 </script>
 
 <section id="hero" class="min-h-screen/2 flex items-center justify-center px-4 py-20">
-	<div class="mx-auto max-w-5xl">
+	<div class="w-full md:px-18 max-w-7xl">
 		<!-- Wrapper with border and profile image -->
 		<div class="relative rounded-2xl border-2 border-border bg-primary/90 p-8 md:p-12">
 			<!-- Profile Image - positioned at the border -->

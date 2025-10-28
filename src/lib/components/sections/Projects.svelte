@@ -93,11 +93,13 @@
 		{#if projects.length > 0}
 			<!-- Filter Section -->
 			<div class="mb-8 flex flex-row gap-4 sm:flex-row sm:items-center sm:justify-between">
-				<div class="md:ml-auto flex-1 md:flex-0 flex flex-row-reverse items-center justify-end gap-3">
+				<div
+					class="flex flex-1 flex-row-reverse items-center justify-end gap-3 md:ml-auto md:flex-0"
+				>
 					{#if selectedTags.length > 0}
 						<button
 							onclick={clearFilters}
-							class="cursor-pointer text-muted-foreground transition-colors hover:text-destructive"
+							class="cursor-pointer text-destructive/40 transition-colors hover:text-destructive"
 							title="Clear all filters"
 						>
 							<FilterX class="h-5 w-5" />
@@ -107,7 +109,7 @@
 					{/if}
 					<Select.Root type="multiple" bind:value={selectedTags}>
 						<Select.Trigger
-							class="h-input flex-grow rounded-9px border-border-input data-placeholder:text-foreground-alt/50 inline-flex w-full sm:w-[296px] touch-none items-center border bg-background px-[11px] text-sm transition-colors select-none"
+							class="h-input rounded-9px border-border-input data-placeholder:text-foreground-alt/50 inline-flex w-full flex-grow touch-none items-center border bg-background px-[11px] text-sm transition-colors select-none sm:w-[296px]"
 							aria-label="Select a tag to filter projects"
 						>
 							{#if selectedTags.length > 0}
@@ -118,7 +120,9 @@
 										</span>
 									{/each}
 									{#if selectedTags.length > 2}
-										<span class="text-xs text-muted-foreground">+{selectedTags.length - 2} more</span>
+										<span class="text-xs text-muted-foreground"
+											>+{selectedTags.length - 2} more</span
+										>
 									{/if}
 								</div>
 							{:else}
@@ -138,7 +142,7 @@
 
 			<!-- Projects Grid -->
 			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-				{#each paginatedProjects as project}
+				{#each paginatedProjects as project (project.title)}
 					<ProjectCard {project} />
 				{/each}
 				{#each Array(placeholdersNeeded) as _}

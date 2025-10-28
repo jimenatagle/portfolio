@@ -43,7 +43,7 @@ export const projects = [
         tags: ['NoSQL', 'graph-database', 'neo4j', 'data-modeling', 'cypher', 'e-commerce']
     },
         {
-        title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j)',
+        title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j) - 1',
         image: 'images/projects/project_1.png',
         details: {
             goal: 'Model user-product interactions to answer behavioral questions (funnels, “also bought,” price dynamics) and inform sales/inventory strategy.',
@@ -64,7 +64,7 @@ export const projects = [
         tags: ['NoSQL', 'graph-database', 'neo4j', 'data-modeling', 'cypher', 'e-commerce']
     },
         {
-        title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j)',
+        title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j) - 2',
         image: 'images/projects/project_1.png',
         details: {
             goal: 'Model user-product interactions to answer behavioral questions (funnels, “also bought,” price dynamics) and inform sales/inventory strategy.',
@@ -85,7 +85,7 @@ export const projects = [
         tags: ['NoSQL', 'graph-database', 'neo4j', 'data-modeling', 'cypher', 'e-commerce']
     },
         {
-        title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j)',
+        title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j) - 3',
         image: 'images/projects/project_1.png',
         details: {
             goal: 'Model user-product interactions to answer behavioral questions (funnels, “also bought,” price dynamics) and inform sales/inventory strategy.',
@@ -106,7 +106,7 @@ export const projects = [
         tags: ['NoSQL', 'graph-database', 'neo4j', 'data-modeling', 'cypher', 'e-commerce']
     },
         {
-        title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j)',
+        title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j) - 4',
         image: 'images/projects/project_1.png',
         details: {
             goal: 'Model user-product interactions to answer behavioral questions (funnels, “also bought,” price dynamics) and inform sales/inventory strategy.',
@@ -127,7 +127,7 @@ export const projects = [
         tags: ['NoSQL', 'graph-database', 'neo4j', 'data-modeling', 'cypher', 'e-commerce']
     },
         {
-        title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j)',
+        title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j) - 5',
         image: 'images/projects/project_1.png',
         details: {
             goal: 'Model user-product interactions to answer behavioral questions (funnels, “also bought,” price dynamics) and inform sales/inventory strategy.',

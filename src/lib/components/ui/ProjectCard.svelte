@@ -38,60 +38,66 @@
 <Dialog.Root bind:open>
 	<Dialog.Trigger>
 		<article
-			class="group cursor-pointer overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] h-[400px] flex flex-col"
+			class="group cursor-pointer overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] h-[500px] flex flex-col"
 		>
 			{#if project.image}
-				<div class="aspect-video w-full overflow-hidden bg-muted">
+				<div class="h-[180px] w-full bg-muted overflow-hidden rounded-t-2xl">
 					<img
 						src={project.image}
 						alt={project.title}
-						class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+						class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 					/>
 				</div>
 			{/if}
 
-			<div class="relative p-6 pb-16">
-				<h3 class="mb-4 text-2xl font-bold leading-tight text-card-foreground">
-					{project.title}
-				</h3>
+			<div class="relative flex-1 flex flex-col overflow-y-auto">
+				<!-- Div 1: Title Section -->
+				<div class="px-6 pt-6 pb-4">
+					<h3 class="text-2xl font-bold leading-tight text-card-foreground">
+						{project.title}
+					</h3>
+				</div>
 
-				{#if project.tags && project.tags.length > 0}
-					<div class="flex flex-wrap gap-2">
-						{#each project.tags as tag}
-							<span
-								class="rounded-full px-3 py-1.5 text-xs font-medium {getTagColor(tag)} transition-colors"
-							>
-								{tag}
-							</span>
-						{/each}
-					</div>
-				{/if}
+				<!-- Div 2: Tags + Thumbs Up Section -->
+				<div class="relative flex-1 px-6 pb-12">
+					{#if project.tags && project.tags.length > 0}
+						<div class="flex flex-wrap gap-2">
+							{#each project.tags as tag}
+								<span
+									class="rounded-full px-3 py-1.5 text-xs font-medium {getTagColor(tag)} transition-colors"
+								>
+									{tag}
+								</span>
+							{/each}
+						</div>
+					{/if}
 
-				<!-- Thumbs Up Button -->
-				<button
-					onclick={handleLike}
-					disabled={hasLiked}
-					class="absolute bottom-5 right-5 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm transition-all duration-200 {hasLiked
-						? 'bg-primary/15 text-primary cursor-not-allowed'
-						: 'bg-background border border-border hover:bg-primary/10 hover:text-primary hover:border-primary/20 text-muted-foreground'}"
-					title={hasLiked ? 'Already liked' : 'Like this project'}
-				>
-					<ThumbsUp class="h-4 w-4" fill={hasLiked ? 'currentColor' : 'none'} />
-					<span class="font-semibold">{likesStore.getLikes(projectId)}</span>
-				</button>
+					<!-- Thumbs Up Button -->
+					<button
+						onclick={handleLike}
+						disabled={hasLiked}
+						class="absolute bottom-5 right-5 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm transition-all duration-200 {hasLiked
+							? 'bg-primary/15 text-primary cursor-not-allowed'
+							: 'bg-background border border-border hover:bg-primary/10 hover:text-primary hover:border-primary/20 text-muted-foreground'}"
+						title={hasLiked ? 'Already liked' : 'Like this project'}
+					>
+						<ThumbsUp class="h-4 w-4" fill={hasLiked ? 'currentColor' : 'none'} />
+						<span class="font-semibold">{likesStore.getLikes(projectId)}</span>
+					</button>
+				</div>
 			</div>
 		</article>
 	</Dialog.Trigger>
 
 	<Dialog.Content class="flex max-h-[90vh] min-w-[75vw] flex-col overflow-hidden p-0 gap-0">
-		<Dialog.Header
-			class="border-b border-border/50 bg-background px-8 pb-5 pt-6"
-		>
-			<Dialog.Title class="text-3xl font-bold">{project.title}</Dialog.Title>
-		</Dialog.Header>
+		<div class="max-h-full flex-1 overflow-y-auto">
+			<Dialog.Header
+				class="border-b border-border/50 bg-background px-6 pb-5 pt-6 mb-6"
+			>
+				<Dialog.Title class="text-3xl font-bold">{project.title}</Dialog.Title>
+			</Dialog.Header>
 
-		<div class="max-h-full flex-1 overflow-y-auto px-6 py-6">
-			<div class="space-y-6">
+			<div class="space-y-6 px-6 pb-6">
 			<!-- Image and Goal Row -->
 			<div class="flex flex-col gap-6 md:flex-row md:gap-8">
 				{#if project.image}

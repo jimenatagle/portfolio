@@ -38,24 +38,28 @@
 <Dialog.Root bind:open>
 	<Dialog.Trigger>
 		<article
-			class="group cursor-pointer overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all hover:scale-105"
+			class="group cursor-pointer overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] h-[400px] flex flex-col"
 		>
 			{#if project.image}
 				<div class="aspect-video w-full overflow-hidden bg-muted">
-					<img src={project.image} alt={project.title} class="h-full w-full object-contain" />
+					<img
+						src={project.image}
+						alt={project.title}
+						class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+					/>
 				</div>
 			{/if}
 
-			<div class="relative p-6">
-				<h3 class="mb-8 text-xl font-semibold text-card-foreground">
+			<div class="relative p-6 pb-16">
+				<h3 class="mb-4 text-2xl font-bold leading-tight text-card-foreground">
 					{project.title}
 				</h3>
 
 				{#if project.tags && project.tags.length > 0}
-					<div class="mb-4 flex flex-wrap gap-2">
+					<div class="flex flex-wrap gap-2">
 						{#each project.tags as tag}
 							<span
-								class="rounded-full px-3 py-1 text-sm {getTagColor(tag)}"
+								class="rounded-full px-3 py-1.5 text-xs font-medium {getTagColor(tag)} transition-colors"
 							>
 								{tag}
 							</span>
@@ -63,21 +67,17 @@
 					</div>
 				{/if}
 
-				<div class="text-sm font-medium text-primary">
-					Click to view details
-				</div>
-
 				<!-- Thumbs Up Button -->
 				<button
 					onclick={handleLike}
 					disabled={hasLiked}
-					class="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-all {hasLiked
-						? 'bg-primary/10 text-primary cursor-not-allowed'
-						: 'bg-muted hover:bg-primary/10 hover:text-primary text-muted-foreground'}"
+					class="absolute bottom-5 right-5 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm transition-all duration-200 {hasLiked
+						? 'bg-primary/15 text-primary cursor-not-allowed'
+						: 'bg-background border border-border hover:bg-primary/10 hover:text-primary hover:border-primary/20 text-muted-foreground'}"
 					title={hasLiked ? 'Already liked' : 'Like this project'}
 				>
 					<ThumbsUp class="h-4 w-4" fill={hasLiked ? 'currentColor' : 'none'} />
-					<span>{likesStore.getLikes(projectId)}</span>
+					<span class="font-semibold">{likesStore.getLikes(projectId)}</span>
 				</button>
 			</div>
 		</article>
@@ -85,18 +85,18 @@
 
 	<Dialog.Content class="flex max-h-[90vh] min-w-[75vw] flex-col overflow-hidden p-0 gap-0">
 		<Dialog.Header
-			class="sticky top-0 z-10 border-b border-border bg-background px-6 pb-4 pt-4"
+			class="sticky top-0 z-10 border-b border-border/50 bg-background/95 backdrop-blur-sm px-8 pb-5 pt-6"
 		>
-			<Dialog.Title>{project.title}</Dialog.Title>
+			<Dialog.Title class="text-3xl font-bold">{project.title}</Dialog.Title>
 		</Dialog.Header>
 
-		<div class="max-h-full flex-1 overflow-y-auto px-6 py-6">
-			<div class="space-y-6">
+		<div class="max-h-full flex-1 overflow-y-auto px-8 py-8">
+			<div class="space-y-8">
 			<!-- Image and Goal Row -->
-			<div class="flex flex-col gap-4 md:flex-row md:gap-6">
+			<div class="flex flex-col gap-6 md:flex-row md:gap-8">
 				{#if project.image}
 					<div class="w-full shrink-0 md:w-5/12">
-						<div class="aspect-video w-full overflow-hidden rounded-lg bg-muted">
+						<div class="aspect-video w-full overflow-hidden rounded-xl bg-muted shadow-sm">
 							<img src={project.image} alt={project.title} class="h-full w-full object-contain" />
 						</div>
 					</div>
@@ -104,40 +104,46 @@
 
 				{#if project.details?.goal}
 					<div class="flex-1">
-						<h4 class="mb-2 text-lg font-semibold text-foreground">Goal</h4>
-						<p class="text-muted-foreground">{project.details.goal}</p>
+						<h4 class="mb-3 text-xl font-bold text-foreground">Goal</h4>
+						<p class="leading-relaxed text-muted-foreground">{project.details.goal}</p>
 					</div>
 				{/if}
 			</div>
 
 			{#if project.details?.challenges && project.details.challenges.length > 0}
-				<div>
-					<h4 class="mb-2 text-lg font-semibold text-foreground">Challenges</h4>
-					<ul class="list-disc space-y-1 pl-5 text-muted-foreground">
+				<div class="rounded-xl bg-muted/30 p-6">
+					<h4 class="mb-4 text-xl font-bold text-foreground">Challenges</h4>
+					<ul class="space-y-3 pl-5 text-muted-foreground">
 						{#each project.details.challenges as challenge}
-							<li>{challenge}</li>
+							<li class="relative pl-2 before:absolute before:left-[-1rem] before:content-['•'] before:text-primary before:font-bold">
+								{challenge}
+							</li>
 						{/each}
 					</ul>
 				</div>
 			{/if}
 
 			{#if project.details?.approach && project.details.approach.length > 0}
-				<div>
-					<h4 class="mb-2 text-lg font-semibold text-foreground">Approach</h4>
-					<ul class="list-disc space-y-1 pl-5 text-muted-foreground">
+				<div class="rounded-xl bg-muted/30 p-6">
+					<h4 class="mb-4 text-xl font-bold text-foreground">Approach</h4>
+					<ul class="space-y-3 pl-5 text-muted-foreground">
 						{#each project.details.approach as item}
-							<li>{item}</li>
+							<li class="relative pl-2 before:absolute before:left-[-1rem] before:content-['•'] before:text-primary before:font-bold">
+								{item}
+							</li>
 						{/each}
 					</ul>
 				</div>
 			{/if}
 
 			{#if project.details?.results && project.details.results.length > 0}
-				<div>
-					<h4 class="mb-2 text-lg font-semibold text-foreground">Results</h4>
-					<ul class="list-disc space-y-1 pl-5 text-muted-foreground">
+				<div class="rounded-xl bg-muted/30 p-6">
+					<h4 class="mb-4 text-xl font-bold text-foreground">Results</h4>
+					<ul class="space-y-3 pl-5 text-muted-foreground">
 						{#each project.details.results as result}
-							<li>{result}</li>
+							<li class="relative pl-2 before:absolute before:left-[-1rem] before:content-['•'] before:text-primary before:font-bold">
+								{result}
+							</li>
 						{/each}
 					</ul>
 				</div>
@@ -145,11 +151,11 @@
 
 			{#if project.tags && project.tags.length > 0}
 				<div>
-					<h4 class="mb-2 text-lg font-semibold text-foreground">Technologies</h4>
-					<div class="flex flex-wrap gap-2">
+					<h4 class="mb-4 text-xl font-bold text-foreground">Technologies</h4>
+					<div class="flex flex-wrap gap-2.5">
 						{#each project.tags as tag}
 							<span
-								class="rounded-full px-3 py-1 text-sm {getTagColor(tag)}"
+								class="rounded-full px-4 py-2 text-sm font-medium {getTagColor(tag)} transition-colors"
 							>
 								{tag}
 							</span>
@@ -160,7 +166,7 @@
 			</div>
 		</div>
 
-		<Dialog.Footer class="flex items-center justify-between gap-3 border-t border-border bg-background px-6 py-4">
+		<Dialog.Footer class="flex items-center justify-between gap-4 border-t border-border/50 bg-background/95 backdrop-blur-sm px-8 py-5">
 			<!-- Project Links -->
 			<div class="flex gap-3">
 				{#if project.link}
@@ -168,7 +174,7 @@
 						href={project.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+						class="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md"
 						onclick={(e) => e.stopPropagation()}
 					>
 						View Project
@@ -188,7 +194,7 @@
 						href={project.github}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
+						class="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-all hover:bg-muted hover:border-foreground/20"
 						onclick={(e) => e.stopPropagation()}
 					>
 						<svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -207,13 +213,13 @@
 			<button
 				onclick={handleLike}
 				disabled={hasLiked}
-				class="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-all {hasLiked
-					? 'bg-primary/10 text-primary cursor-not-allowed'
-					: 'bg-muted hover:bg-primary/10 hover:text-primary text-muted-foreground'}"
+				class="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm transition-all duration-200 {hasLiked
+					? 'bg-primary/15 text-primary cursor-not-allowed'
+					: 'bg-background border border-border hover:bg-primary/10 hover:text-primary hover:border-primary/20 text-muted-foreground'}"
 				title={hasLiked ? 'Already liked' : 'Like this project'}
 			>
 				<ThumbsUp class="h-4 w-4" fill={hasLiked ? 'currentColor' : 'none'} />
-				<span>{likesStore.getLikes(projectId)}</span>
+				<span class="font-semibold">{likesStore.getLikes(projectId)}</span>
 			</button>
 		</Dialog.Footer>
 	</Dialog.Content>

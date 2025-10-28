@@ -1,12 +1,13 @@
 <script>
 	import { projects } from '$lib/stores/projects.svelte';
 	import ProjectCard from '$lib/components/ui/ProjectCard.svelte';
+	import SectionHeading from '$lib/components/ui/SectionHeading.svelte';
 </script>
 
 <section id="projects" class="px-4 py-20">
 	<div class="mx-auto max-w-7xl md:px-18">
 		<div class="mb-12 text-center">
-			<h2 class="mb-8 text-4xl font-bold text-foreground">Projects</h2>
+			<SectionHeading title="Projects" />
 		</div>
 
 		{#if projects.length > 0}

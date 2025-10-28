@@ -23,8 +23,7 @@ export const siteConfig = {
 	// Navigation items
 	nav: [
 		{ name: 'Home', href: '#hero' },
-		{ name: 'Projects', href: '#projects' },
-		{ name: 'Contact', href: '#contact' }
+		{ name: 'Projects', href: '#projects' }
 	],
 
 	// Tag color mappings (background and text colors for light/dark mode)

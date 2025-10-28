@@ -109,7 +109,7 @@
 					{/if}
 					<Select.Root type="multiple" bind:value={selectedTags}>
 						<Select.Trigger
-							class="h-input rounded-9px border-border-input data-placeholder:text-foreground-alt/50 inline-flex w-full flex-grow touch-none items-center border bg-background px-[11px] text-sm transition-colors select-none sm:w-[296px]"
+							class="h-input rounded-9px border-border-input data-placeholder:text-foreground-alt/50 inline-flex w-full flex-grow touch-none items-center border bg-background px-[11px] text-sm transition-all duration-200 hover:border-ring  hover:shadow-md hover:scale-[1.01] select-none sm:w-64 md:w-72 lg:w-80 xl:w-96"
 							aria-label="Select a tag to filter projects"
 						>
 							{#if selectedTags.length > 0}

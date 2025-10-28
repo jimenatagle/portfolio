@@ -85,7 +85,7 @@
 
 	<Dialog.Content class="flex max-h-[90vh] min-w-[75vw] flex-col overflow-hidden p-0 gap-0">
 		<Dialog.Header
-			class="sticky top-0 z-10 border-b border-border/50 bg-background/95 backdrop-blur-sm px-8 pb-5 pt-6"
+			class="border-b border-border/50 bg-background px-8 pb-5 pt-6"
 		>
 			<Dialog.Title class="text-3xl font-bold">{project.title}</Dialog.Title>
 		</Dialog.Header>

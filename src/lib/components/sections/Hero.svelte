@@ -1,5 +1,6 @@
 <script>
 	import { siteConfig } from '$lib/config';
+	import { base } from '$app/paths';
 </script>
 
 <section id="hero" class="min-h-screen/2 flex items-center justify-center px-4 py-20">
@@ -40,7 +41,7 @@
 				<!-- Fact 1: Education -->
 				<div class="flex flex-col items-center gap-3 text-center">
 					<div class="flex h-16 w-16 items-center justify-center rounded-lg bg-muted">
-						<img src="/images/profile/graduation-hat.svg" alt="Education" class="h-12 w-12" />
+						<img src="{base}/images/profile/graduation-hat.svg" alt="Education" class="h-12 w-12" />
 					</div>
 					<p class="font-medium text-primary-foreground">Master student of at USI, Lugano</p>
 				</div>
@@ -49,7 +50,7 @@
 				<div class="flex flex-col items-center gap-3 text-center">
 					<div class="flex h-16 w-16 items-center justify-center rounded-lg bg-muted">
 						<img
-							src="/images/profile/office-building.svg"
+							src="{base}/images/profile/office-building.svg"
 							alt="Professional experience"
 							class="h-12 w-12"
 						/>
@@ -62,7 +63,7 @@
 				<!-- Fact 3: Passion -->
 				<div class="flex flex-col items-center gap-3 text-center">
 					<div class="flex h-16 w-16 items-center justify-center rounded-lg bg-muted">
-						<img src="/images/profile/talk.svg" alt="Passion" class="h-12 w-12" />
+						<img src="{base}/images/profile/talk.svg" alt="Passion" class="h-12 w-12" />
 					</div>
 					<p class="font-medium text-primary-foreground">
 						Passionate about solving real world problems applying top techniques

@@ -1,3 +1,5 @@
+import { base } from '$app/paths';
+
 /**
  * Site-wide configuration and constants
  */
@@ -9,8 +11,8 @@ export const siteConfig = {
 	description:
 		'Portfolio showcasing my projects over my studies at USI.',
 	url: 'https://jimena.github.com',
-	ogImage: '/og-image.png',
-	profileImage: '/images/profile/pic.png', // Path to profile image
+	ogImage: `${base}/og-image.png`,
+	profileImage: `${base}/images/profile/pic.png`, // Path to profile image
 
 	// Personal/Social links
 	links: {

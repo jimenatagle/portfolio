@@ -187,9 +187,7 @@
 		{:else}
 			<div class="rounded-lg border-2 border-dashed border-border p-12 text-center">
 				<p class="text-muted-foreground">
-					No projects yet. Add your projects in <code class="rounded px-2 py-1 text-sm"
-						>src/lib/stores/projects.svelte.js</code
-					>
+					No projects yet. Try again later!
 				</p>
 			</div>
 		{/if}

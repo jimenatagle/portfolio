@@ -99,13 +99,13 @@
 					{#if selectedTags.length > 0}
 						<button
 							onclick={clearFilters}
-							class="cursor-pointer text-destructive/40 transition-colors hover:text-destructive"
+							class="cursor-pointer text-destructive/40 transition-colors hover:text-destructive min-h-5 min-w-5"
 							title="Clear all filters"
 						>
 							<FilterX class="h-5 w-5" />
 						</button>
 					{:else}
-						<Filter class="h-5 w-5 text-muted-foreground" />
+						<Filter class="h-5 w-5 min-h-5 min-w-5 text-muted-foreground" />
 					{/if}
 					<Select.Root type="multiple" bind:value={selectedTags}>
 						<Select.Trigger
@@ -141,7 +141,7 @@
 			</div>
 
 			<!-- Projects Grid -->
-			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 				{#each paginatedProjects as project (project.title)}
 					<ProjectCard {project} />
 				{/each}

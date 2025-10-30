@@ -4,12 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --radius: 0.625rem;
   /* --background: oklch(0.945 0.013 30); */
-  --background: oklch(0.925 0.009 40);
+  --background: oklch(97.816% 0.00342 38.025);
   --foreground: oklch(0.22 0.007 50);
-  --card: oklch(0.945 0.013 30);
+  --card: oklch(0.685 0.045 200);
   --card-foreground: oklch(0.22 0.007 50);
   --popover: oklch(0.945 0.013 30);
   --popover-foreground: oklch(0.22 0.007 50);
@@ -48,13 +52,13 @@
   --card-foreground: oklch(0.945 0.013 30);
   --popover: oklch(0.28 0.008 50);
   --popover-foreground: oklch(0.945 0.013 30);
-  --primary: oklch(0.685 0.045 200);
+  --primary: oklch(0.615 0.048 235);
   --primary-foreground: oklch(0.22 0.007 50);
   --secondary: oklch(0.615 0.048 235);
   --secondary-foreground: oklch(0.22 0.007 50);
   --muted: oklch(0.35 0.009 50);
   --muted-foreground: oklch(0.725 0.008 35);
-  --accent: oklch(0.575 0.035 180);
+  --accent: oklch(0.615 0.048 235);
   --accent-foreground: oklch(0.945 0.013 30);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(0.945 0.013 30 / 12%);

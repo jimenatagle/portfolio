@@ -2,7 +2,16 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Badge } from '$lib/components/ui/badge';
 	import * as Card from '$lib/components/ui/card';
-	import { ThumbsUp, ChevronRight } from '@lucide/svelte/icons';
+	import TimelineSection from '$lib/components/ui/TimelineSection.svelte';
+	import {
+		ThumbsUp,
+		ChevronRight,
+		Target,
+		Lightbulb,
+		Trophy,
+		ExternalLink,
+		Github
+	} from '@lucide/svelte/icons';
 	import { likesStore } from '$lib/stores/likes.svelte.js';
 	import { getTagColor } from '$lib/config.js';
 	import { onMount } from 'svelte';
@@ -72,8 +81,11 @@
 				{/if}
 			</Card.Content>
 			<Card.Footer class="flex items-center justify-between py-2">
-				<span class="flex items-center gap-1.5 text-sm text-muted-foreground">
-					<span class="relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 group-hover:after:w-full">View</span>
+				<span class="flex items-center gap-1.5 text-sm text-white">
+					<span
+						class="relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 group-hover:after:w-full"
+						>View</span
+					>
 					<ChevronRight class="h-3.5 w-3.5" />
 				</span>
 				<!-- Thumbs Up Button -->
@@ -81,8 +93,8 @@
 					onclick={handleLike}
 					disabled={hasLiked}
 					class="flex items-center gap-1 rounded-full px-2 py-1.5 text-sm font-medium shadow-sm transition-all duration-200 {hasLiked
-						? 'cursor-not-allowed bg-primary/15 text-primary'
-						: 'border border-border bg-background text-muted-foreground hover:border-primary/20 hover:bg-primary/10 hover:text-primary'}"
+						? 'cursor-not-allowed bg-background dark:bg-white text-primary'
+						: 'border border-border bg-background dark:bg-white text-muted-foreground hover:border-primary/20 hover:bg-primary/10 hover:text-primary'}"
 					title={hasLiked ? 'Already liked' : 'Like this project'}
 				>
 					<ThumbsUp class="h-4 w-4" fill={hasLiked ? 'currentColor' : 'none'} />
@@ -94,16 +106,16 @@
 
 	<Dialog.Content class="flex max-h-[90vh] min-w-[75vw] flex-col gap-0 overflow-hidden p-0">
 		<div class="max-h-full flex-1 overflow-y-auto">
-			<Dialog.Header class="mb-6 border-b border-border/50 bg-background px-6 pt-6 pb-5">
-				<Dialog.Title class="text-3xl font-bold">{project.title}</Dialog.Title>
+			<Dialog.Header class="px-8 pt-8 pb-6">
+				<Dialog.Title class="text-4xl font-bold tracking-tight">{project.title}</Dialog.Title>
 			</Dialog.Header>
 
-			<div class="space-y-6 px-6 pb-6">
+			<div class="space-y-8 px-8">
 				<!-- Image and Goal Row -->
-				<div class="flex flex-col gap-6 md:flex-row md:gap-8">
+				<div class="flex flex-col gap-8 md:flex-row md:gap-10">
 					{#if project.image}
 						<div class="w-full shrink-0 md:w-5/12">
-							<div class="aspect-video w-full overflow-hidden rounded-xl border border-border/20">
+							<div class="aspect-video w-full overflow-hidden rounded-xl shadow-md">
 								<img src={project.image} alt={project.title} class="h-full w-full object-contain" />
 							</div>
 						</div>
@@ -111,73 +123,58 @@
 
 					{#if project.details?.goal}
 						<div class="flex-1">
-							<h4 class="mb-3 text-lg font-semibold text-foreground/90">Goal</h4>
-							<p class="text-lg leading-relaxed text-muted-foreground">{project.details.goal}</p>
+							<h4 class="mb-4 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+								Goal
+							</h4>
+							<p class="text-base leading-relaxed text-foreground">
+								{project.details.goal}
+							</p>
 						</div>
 					{/if}
 				</div>
 
-				{#if project.details?.challenges && project.details.challenges.length > 0}
-					<div class="border-l-2 border-primary/30 py-4 pl-6">
-						<h4 class="mb-4 text-lg font-semibold text-foreground/90">Challenges</h4>
-						<ul class="space-y-3 pl-5 text-muted-foreground">
-							{#each project.details.challenges as challenge}
-								<li
-									class="relative pl-2 before:absolute before:left-[-1rem] before:font-bold before:text-primary before:content-['•']"
-								>
-									{challenge}
-								</li>
-							{/each}
-						</ul>
-					</div>
-				{/if}
+				<!-- Timeline Section -->
+				{#if (project.details?.challenges && project.details.challenges.length > 0) || (project.details?.approach && project.details.approach.length > 0) || (project.details?.results && project.details.results.length > 0)}
+					<div class="pt-4">
+						{#if project.details?.challenges && project.details.challenges.length > 0}
+							<TimelineSection
+								title="Challenges"
+								items={project.details.challenges}
+								icon={Target}
+								isLast={!project.details?.approach && !project.details?.results}
+							/>
+						{/if}
 
-				{#if project.details?.approach && project.details.approach.length > 0}
-					<div class="border-l-2 border-primary/30 py-4 pl-6">
-						<h4 class="mb-4 text-lg font-semibold text-foreground/90">Approach</h4>
-						<ul class="space-y-3 pl-5 text-muted-foreground">
-							{#each project.details.approach as item}
-								<li
-									class="relative pl-2 before:absolute before:left-[-1rem] before:font-bold before:text-primary before:content-['•']"
-								>
-									{item}
-								</li>
-							{/each}
-						</ul>
-					</div>
-				{/if}
+						{#if project.details?.approach && project.details.approach.length > 0}
+							<TimelineSection
+								title="Approach"
+								items={project.details.approach}
+								icon={Lightbulb}
+								isLast={!project.details?.results}
+							/>
+						{/if}
 
-				{#if project.details?.results && project.details.results.length > 0}
-					<div class="border-l-2 border-primary/30 py-4 pl-6">
-						<h4 class="mb-4 text-lg font-semibold text-foreground/90">Results</h4>
-						<ul class="space-y-3 pl-5 text-muted-foreground">
-							{#each project.details.results as result}
-								<li
-									class="relative pl-2 before:absolute before:left-[-1rem] before:font-bold before:text-primary before:content-['•']"
-								>
-									{result}
-								</li>
-							{/each}
-						</ul>
+						{#if project.details?.results && project.details.results.length > 0}
+							<TimelineSection
+								title="Results"
+								items={project.details.results}
+								icon={Trophy}
+								isLast={true}
+							/>
+						{/if}
 					</div>
 				{/if}
 			</div>
 		</div>
 
 		<Dialog.Footer
-			class="flex flex-col gap-4 border-t border-border/50 bg-background/95 px-6 py-5 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between"
+			class="flex flex-col gap-2 border-t border-border/50 bg-background/95 px-4 py-4 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between"
 		>
 			<!-- Technology Tags - Left on desktop, top on mobile -->
 			{#if project.tags && project.tags.length > 0}
-				<div class="flex flex-wrap gap-2">
+				<div class="flex flex-row-reverse flex-wrap-reverse justify-center gap-1">
 					{#each project.tags as tag}
-						<span
-							class="rounded-full px-3 py-1.5 text-xs font-medium {getTagColor(
-								tag
-							)} transition-colors"
-						>
-							{tag}
-						</span>
+						<Badge class={getTagColor(tag)}>{tag}</Badge>
 					{/each}
 				</div>
 			{/if}

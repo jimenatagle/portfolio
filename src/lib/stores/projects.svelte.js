@@ -2,7 +2,7 @@ export const projects = [
     // Here will go the project objects
     {
         title: 'Evolutionary computation for optimizing distribution systems',
-        image: 'images/projects/project_1.png',
+        image: 'images/projects/project_1.webp',
         details: {
             goal: 'Minimize delivery cost by relocating assets to distribution points.',
             challenges: [
@@ -23,7 +23,7 @@ export const projects = [
     },
     {
         title: 'NoSQL Graph Analytics for E-commerce Behavior (Neo4j)',
-        image: 'images/projects/project_1.png',
+        image: 'images/projects/project_2.webp',
         details: {
             goal: 'Model user-product interactions to answer behavioral questions (funnels, “also bought,” price dynamics) and inform sales/inventory strategy.',
             challenges: [

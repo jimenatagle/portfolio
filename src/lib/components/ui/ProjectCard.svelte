@@ -94,7 +94,7 @@
 					disabled={hasLiked}
 					class="flex items-center gap-1 rounded-full px-2 py-1.5 text-sm font-medium shadow-sm transition-all duration-200 {hasLiked
 						? 'cursor-not-allowed bg-background dark:bg-white text-primary'
-						: 'border border-border bg-background dark:bg-white text-muted-foreground hover:border-primary/20 hover:bg-primary/10 hover:text-primary'}"
+						: 'bg-background dark:bg-white text-muted-foreground dark:text-background dark:hover:text-primary hover:text-primary'}"
 					title={hasLiked ? 'Already liked' : 'Like this project'}
 				>
 					<ThumbsUp class="h-4 w-4" fill={hasLiked ? 'currentColor' : 'none'} />
@@ -224,9 +224,9 @@
 				<button
 					onclick={handleLike}
 					disabled={hasLiked}
-					class="flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm transition-all duration-200 {hasLiked
-						? 'cursor-not-allowed bg-primary/15 text-primary'
-						: 'border border-border bg-background text-muted-foreground hover:border-primary/20 hover:bg-primary/10 hover:text-primary'}"
+					class="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium shadow-sm transition-all duration-200 {hasLiked
+						? 'cursor-not-allowed bg-background dark:bg-white text-primary'
+						: 'bg-background dark:bg-white text-muted-foreground dark:text-background dark:hover:text-primary hover:text-primary'}"
 					title={hasLiked ? 'Already liked' : 'Like this project'}
 				>
 					<ThumbsUp class="h-4 w-4" fill={hasLiked ? 'currentColor' : 'none'} />

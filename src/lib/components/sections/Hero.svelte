@@ -43,7 +43,7 @@
 					<div class="flex h-16 w-16 items-center justify-center rounded-lg bg-muted">
 						<img src="{base}/images/profile/graduation-hat.svg" alt="Education" class="h-12 w-12" />
 					</div>
-					<p class="font-medium text-primary-foreground">Master student of at USI, Lugano</p>
+					<p class="font-medium text-primary-foreground">Master’s student in Artificial Intelligence at USI (Lugano)</p>
 				</div>
 
 				<!-- Fact 2: Professional Experience -->
@@ -56,7 +56,7 @@
 						/>
 					</div>
 					<p class="font-medium text-primary-foreground">
-						Professional experience in gaining measurable productivity gains
+						Professional experienced in gaining quantifiable productivity through the use of data.
 					</p>
 				</div>
 
@@ -66,7 +66,7 @@
 						<img src="{base}/images/profile/talk.svg" alt="Passion" class="h-12 w-12" />
 					</div>
 					<p class="font-medium text-primary-foreground">
-						Passionate about solving real world problems applying top techniques
+						Passionate about exploring the limitless possibilities of AI to address real-world challenges.
 					</p>
 				</div>
 			</div>

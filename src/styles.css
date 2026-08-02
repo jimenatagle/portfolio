@@ -211,7 +211,7 @@ h1 span {
 .hero-greeting {
   margin: 0 0 14px;
   color: var(--coral);
-  font: 13px/1 var(--mono);
+  font: clamp(18px, 1.5vw, 24px)/1 var(--mono);
   text-transform: uppercase;
   letter-spacing: .11em;
 }
@@ -302,13 +302,8 @@ h2 {
 .card:first-child { border-right: 1px solid var(--line); }
 .card-overview {
   min-height: 330px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 42%;
+  display: flex;
   cursor: pointer;
-}
-.card.secondary .card-overview {
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 104px;
 }
 .card:hover { background: color-mix(in srgb, var(--blue-whisper) 42%, transparent); }
 .card[hidden] { display: none; }
@@ -408,61 +403,6 @@ h3 {
 }
 .like .heart { color: var(--coral); font-size: 15px; transition: transform .2s ease, color .2s ease; }
 .like:hover .heart, .like.liked .heart { color: var(--coral); transform: scale(1.12); }
-
-.visual {
-  position: relative;
-  overflow: hidden;
-  border-left: 1px solid var(--line);
-  background:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-.visual::before {
-  content: "";
-  position: absolute;
-  width: 210px;
-  height: 210px;
-  top: 36px;
-  left: calc(50% - 105px);
-  border: 1px solid var(--blue);
-  border-radius: 50%;
-  box-shadow:
-    -54px 33px 0 -1px var(--paper), -54px 33px 0 0 var(--line-strong),
-    55px 34px 0 -1px var(--paper), 55px 34px 0 0 var(--line-strong);
-}
-.visual::after {
-  content: "fitness ↑";
-  position: absolute;
-  left: 18px;
-  bottom: 17px;
-  color: var(--muted);
-  font: 9px/1 var(--mono);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-}
-
-.secondary-visual {
-  position: relative;
-  overflow: hidden;
-  border-top: 1px solid var(--line);
-  background:
-    radial-gradient(circle at 12% 60%, var(--blue) 0 3px, transparent 4px),
-    radial-gradient(circle at 36% 28%, var(--blue) 0 3px, transparent 4px),
-    radial-gradient(circle at 61% 62%, var(--blue) 0 3px, transparent 4px),
-    radial-gradient(circle at 87% 34%, var(--blue) 0 3px, transparent 4px),
-    linear-gradient(16deg, transparent 13%, var(--line-strong) 13.3% 13.6%, transparent 13.9% 100%),
-    linear-gradient(-10deg, transparent 53%, var(--line-strong) 53.3% 53.6%, transparent 53.9%);
-}
-.secondary-visual span {
-  position: absolute;
-  right: 17px;
-  bottom: 13px;
-  color: var(--muted);
-  font: 9px/1 var(--mono);
-  text-transform: uppercase;
-  letter-spacing: .08em;
-}
 
 .detail-grid {
   display: grid;
@@ -628,8 +568,6 @@ footer { border-top: 1px solid var(--line); }
   h1 { font-size: 43px; }
   .hero { min-height: 0; }
   .facts li { grid-template-columns: 26px 100px 1fr; }
-  .card-overview { grid-template-columns: 1fr; }
-  .visual { min-height: 220px; border-left: 0; border-top: 1px solid var(--line); }
   .contact-links a { grid-template-columns: 72px 1fr auto; }
 }
 

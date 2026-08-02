@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laura Tagle — AI and machine-learning portfolio">
+  <title>Laura Tagle — Blue + Coral Spectrum</title>
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell" aria-label="Primary navigation">
+      <span aria-hidden="true"></span>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="controls">
+        <span class="availability"><span class="blink" aria-hidden="true"></span>training on good questions</span>
+        <button class="theme" type="button" aria-label="Switch to dark theme" title="Change theme">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell" id="about" aria-labelledby="intro-title">
+      <div>
+        <p class="eyebrow">Lugano, Switzerland</p>
+        <p class="hero-greeting">Hi, I'm Laura.</p>
+        <h1 id="intro-title">I connect human problems with <span>machine intelligence.</span></h1>
+        <p class="hero-support">From identifying real-world problems where AI can create value to choosing the right machine-learning approach, I build systems designed for measurable impact.</p>
+      </div>
+      <ul class="facts" aria-label="Profile details">
+        <li><span class="fact-label">Current model</span><span class="fact-value">MSc Artificial Intelligence · USI Lugano</span></li>
+        <li><span class="fact-label">Training data</span><span class="fact-value">Professional experience delivering measurable productivity gains with data</span></li>
+        <li><span class="fact-label">Objective function</span><span class="fact-value">Useful AI systems with measurable impact</span></li>
+      </ul>
+    </section>
+
+    <section class="work shell" id="projects" aria-labelledby="work-title">
+      <div class="workhead">
+        <h2 id="work-title">Projects</h2>
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" type="button" data-filter="ai" aria-pressed="false">AI</button>
+          <button class="chip" type="button" data-filter="optimization" aria-pressed="false">Optimization</button>
+          <button class="chip" type="button" data-filter="graph" aria-pressed="false">Graph Data</button>
+        </div>
+      </div>
+
+      <div class="project-grid" aria-live="polite">
+        <article class="card" data-tags="ai optimization" data-likes="42">
+          <button class="card-open" type="button" data-dialog="project-one-dialog" aria-label="Open details for Evolutionary computation for optimizing distribution systems"></button>
+          <div class="card-overview">
+            <div class="card-copy">
+              <span class="project-type">Optimization</span>
+              <h3>Evolutionary computation for optimizing distribution systems</h3>
+              <p class="summary">A genetic search system that finds resilient, lower-cost distribution layouts across complex operational constraints.</p>
+              <div class="meta">
+                <div class="tags" aria-label="Tags">
+                  <span class="tag">AI</span><span class="tag">Optimization</span><span class="tag">Python</span>
+                </div>
+                <button class="like" type="button" aria-label="Like this project" aria-pressed="false">
+                  <span class="heart" aria-hidden="true">♡</span><span class="count">42</span>
+                </button>
+              </div>
+            </div>
+            <div class="visual" aria-hidden="true"></div>
+          </div>
+        </article>
+
+        <article class="card secondary" data-tags="graph ai" data-likes="31">
+          <button class="card-open" type="button" data-dialog="project-two-dialog" aria-label="Open details for NoSQL Graph Analytics for E-commerce Behavior"></button>
+          <div class="card-overview">
+            <div class="card-copy">
+              <span class="project-type">Graph data</span>
+              <h3>NoSQL Graph Analytics for E-commerce Behavior</h3>
+              <p class="summary">Mapping customer-product relationships to reveal purchasing patterns that tables tend to hide.</p>
+              <div class="meta">
+                <div class="tags" aria-label="Tags">
+                  <span class="tag">Neo4j</span><span class="tag">Graph Data</span><span class="tag">Analytics</span>
+                </div>
+                <button class="like" type="button" aria-label="Like this project" aria-pressed="false">
+                  <span class="heart" aria-hidden="true">♡</span><span class="count">31</span>
+                </button>
+              </div>
+            </div>
+            <div class="secondary-visual" aria-hidden="true"><span>nodes / relations</span></div>
+          </div>
+        </article>
+      </div>
+      <p class="sr-only" id="project-count" aria-live="polite">2 projects shown</p>
+    </section>
+
+    <dialog class="project-dialog" id="project-one-dialog" aria-labelledby="project-one-title">
+      <div class="dialog-inner">
+        <div class="dialog-top">
+          <div>
+            <span class="project-type">Optimization</span>
+            <h3 id="project-one-title">Evolutionary computation for optimizing distribution systems</h3>
+            <p class="dialog-summary">A genetic search system that finds resilient, lower-cost distribution layouts across complex operational constraints.</p>
+            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">AI</span><span class="tag">Optimization</span><span class="tag">Python</span></div>
+          </div>
+          <button class="dialog-close" type="button" aria-label="Close project details">×</button>
+        </div>
+        <div class="detail-grid">
+          <div class="detail-block"><h4>Goal</h4><p>Minimize delivery cost by relocating assets to distribution points.</p></div>
+          <div class="detail-block"><h4>Challenges</h4><ul><li>A large permutation search space makes exact methods impractical on realistic instances</li><li>Individuals have permutable characteristics</li><li>Relocations must remain realistically constrained</li></ul></div>
+          <div class="detail-block"><h4>Approach</h4><ul><li>Stochastic approximation with a genetic algorithm</li><li>Initialization, crossover and mutation operators adapted to the problem constraints</li></ul></div>
+          <div class="detail-block"><h4>Results</h4><ul><li>Three times lower delivery cost than traditional methods while respecting relocation constraints</li><li>A robust, effective and flexible method for resource allocation</li></ul></div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="project-dialog" id="project-two-dialog" aria-labelledby="project-two-title">
+      <div class="dialog-inner">
+        <div class="dialog-top">
+          <div>
+            <span class="project-type">Graph data</span>
+            <h3 id="project-two-title">NoSQL Graph Analytics for E-commerce Behavior</h3>
+            <p class="dialog-summary">Mapping customer-product relationships to reveal purchasing patterns that tables tend to hide.</p>
+            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">Neo4j</span><span class="tag">Graph Data</span><span class="tag">Analytics</span></div>
+          </div>
+          <button class="dialog-close" type="button" aria-label="Close project details">×</button>
+        </div>
+        <div class="detail-grid">
+          <div class="detail-block"><h4>Goal</h4><p>Model user-product interactions to answer behavioral questions about funnels, related purchases and price dynamics, informing sales and inventory strategy.</p></div>
+          <div class="detail-block"><h4>Challenges</h4><ul><li>User journeys do not map cleanly to relational schemas</li><li>Session context and timestamps must remain accurate for funnels and orders</li></ul></div>
+          <div class="detail-block"><h4>Approach</h4><ul><li>Neo4j graph model</li><li>Analytical Cypher queries</li></ul></div>
+          <div class="detail-block"><h4>Results</h4><ul><li>Built a graph spanning users, sessions, products, brands and categories</li><li>Delivered funnel, basket, price and session insights</li><li>Indexes improved query plans and reduced database work</li></ul></div>
+        </div>
+      </div>
+    </dialog>
+
+    <section class="contact shell" id="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="contact-kicker">Contact</p>
+        <h2 id="contact-title">What are we optimizing for?</h2>
+        <p class="contact-copy">Let’s explore where AI could create meaningful value.</p>
+      </div>
+      <ul class="contact-links">
+        <li><a href="mailto:jimenatagle@outlook.com"><span class="contact-label">Email</span><span>jimenatagle@outlook.com</span><span class="contact-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://www.linkedin.com/in/jtaglem/" target="_blank" rel="noreferrer"><span class="contact-label">LinkedIn</span><span>linkedin.com/in/jtaglem</span><span class="contact-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://github.com/jimenatagle" target="_blank" rel="noreferrer"><span class="contact-label">GitHub</span><span>github.com/jimenatagle</span><span class="contact-arrow" aria-hidden="true">↗</span></a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer><div class="footer-inner shell">Made with ☕️ by Laura Tagle</div></footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

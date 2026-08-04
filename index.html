@@ -45,25 +45,31 @@
     <section class="work shell" id="projects" aria-labelledby="work-title">
       <div class="workhead">
         <h2 id="work-title">Projects</h2>
-        <div class="filters" role="group" aria-label="Filter projects">
-          <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
-          <button class="chip" type="button" data-filter="ai" aria-pressed="false">AI</button>
-          <button class="chip" type="button" data-filter="optimization" aria-pressed="false">Optimization</button>
-          <button class="chip" type="button" data-filter="graph" aria-pressed="false">Graph Data</button>
+        <div class="filters">
+          <button class="filter-toggle" type="button" aria-expanded="false" aria-controls="filter-menu">
+            <span aria-hidden="true">☷</span> Filter projects <span class="filter-count">All</span>
+          </button>
+          <div class="filter-menu" id="filter-menu" hidden>
+            <div class="filter-actions">
+              <button type="button" data-filter-action="all">Select all</button>
+              <button type="button" data-filter-action="clear">Clear all</button>
+            </div>
+            <div class="filter-options" role="group" aria-label="Filter projects by tag"></div>
+          </div>
         </div>
       </div>
 
       <div class="project-grid" aria-live="polite">
-        <article class="card" data-tags="ai optimization" data-likes="0">
+        <article class="card" data-likes="0">
           <button class="card-open" type="button" data-dialog="project-one-dialog" aria-label="Open details for Evolutionary computation for optimizing distribution systems"></button>
           <div class="card-overview">
             <div class="card-copy">
               <span class="project-type">Optimization</span>
               <h3>Evolutionary computation for optimizing distribution systems</h3>
-              <p class="summary">A genetic search system that finds resilient, lower-cost distribution layouts across complex operational constraints.</p>
+              <p class="summary">A genetic algorithm that optimizes distribution layouts to reduce delivery costs under real-world constraints.</p>
               <div class="meta">
                 <div class="tags" aria-label="Tags">
-                  <span class="tag">AI</span><span class="tag">Optimization</span><span class="tag">Python</span>
+                  <span class="tag">Applied AI</span><span class="tag">Optimization</span><span class="tag">Genetic Algorithms</span><span class="tag">Business Impact</span>
                 </div>
                 <button class="like" type="button" aria-label="Like this project" aria-pressed="false">
                   <span class="heart" aria-hidden="true">♡</span><span class="count">0</span>
@@ -73,16 +79,111 @@
           </div>
         </article>
 
-        <article class="card secondary" data-tags="graph ai" data-likes="0">
-          <button class="card-open" type="button" data-dialog="project-two-dialog" aria-label="Open details for NoSQL Graph Analytics for E-commerce Behavior"></button>
+        <article class="card secondary" data-likes="0">
+          <button class="card-open" type="button" data-dialog="project-two-dialog" aria-label="Open details for NoSQL Graph analytics for e-commerce behavior"></button>
           <div class="card-overview">
             <div class="card-copy">
               <span class="project-type">Graph data</span>
-              <h3>NoSQL Graph Analytics for E-commerce Behavior</h3>
+              <h3>NoSQL Graph analytics for e-commerce behavior</h3>
               <p class="summary">Mapping customer-product relationships to reveal purchasing patterns that tables tend to hide.</p>
               <div class="meta">
                 <div class="tags" aria-label="Tags">
-                  <span class="tag">Neo4j</span><span class="tag">Graph Data</span><span class="tag">Analytics</span>
+                  <span class="tag">Graph Analytics</span><span class="tag">Neo4j</span><span class="tag">Business Analytics</span>
+                </div>
+                <button class="like" type="button" aria-label="Like this project" aria-pressed="false">
+                  <span class="heart" aria-hidden="true">♡</span><span class="count">0</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card fraud-card" data-likes="0">
+          <button class="card-open" type="button" data-dialog="project-seven-dialog" aria-label="Open details for Temporal and network analytics for fraud detection"></button>
+          <div class="card-overview">
+            <div class="card-copy">
+              <span class="project-type">Fraud analytics</span>
+              <h3>Temporal &amp; network analytics for fraud detection</h3>
+              <p class="summary">Detecting suspicious financial accounts by combining time-series behavior with transaction-network dependencies.</p>
+              <div class="meta">
+                <div class="tags" aria-label="Tags">
+                  <span class="tag">Machine Learning</span><span class="tag">Graph Analytics</span><span class="tag">Anomaly Detection</span><span class="tag">Time Series</span>
+                </div>
+                <button class="like" type="button" aria-label="Like this project" aria-pressed="false">
+                  <span class="heart" aria-hidden="true">♡</span><span class="count">0</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card vision-card" data-likes="0">
+          <button class="card-open" type="button" data-dialog="project-three-dialog" aria-label="Open details for 3D Reconstruction with Structure from Motion"></button>
+          <div class="card-overview">
+            <div class="card-copy">
+              <span class="project-type">Computer vision</span>
+              <h3>3D Reconstruction with Structure from Motion</h3>
+              <p class="summary">A technical deep dive into SfM Revisited, connecting geometry-based reconstruction theory to a practical 3D reconstruction of Statua La Desolazione in Parco Ciani.</p>
+              <div class="meta">
+                <div class="tags" aria-label="Tags">
+                  <span class="tag">Computer Vision</span><span class="tag">3D Reconstruction</span><span class="tag">Image Processing</span>
+                </div>
+                <button class="like" type="button" aria-label="Like this project" aria-pressed="false">
+                  <span class="heart" aria-hidden="true">♡</span><span class="count">0</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card textile-card" data-likes="0">
+          <button class="card-open" type="button" data-dialog="project-four-dialog" aria-label="Open details for Predicting and explaining textile rejects"></button>
+          <div class="card-overview">
+            <div class="card-copy">
+              <span class="project-type">Quality analytics</span>
+              <h3>Predicting &amp; explaining textile rejects</h3>
+              <p class="summary">Most production records have no rejected fabric, but occasional failures can cause significant losses. This project identifies high-risk production conditions and explains the factors associated with reject occurrence and severity.</p>
+              <div class="meta">
+                <div class="tags" aria-label="Tags">
+                  <span class="tag">Machine Learning</span><span class="tag">Statistical Modeling</span><span class="tag">Quality Analytics</span><span class="tag">Business Impact</span>
+                </div>
+                <button class="like" type="button" aria-label="Like this project" aria-pressed="false">
+                  <span class="heart" aria-hidden="true">♡</span><span class="count">0</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card rpa-card" data-likes="0">
+          <button class="card-open" type="button" data-dialog="project-five-dialog" aria-label="Open details for Automated customer document delivery with RPA"></button>
+          <div class="card-overview">
+            <div class="card-copy">
+              <span class="project-type">Process automation</span>
+              <h3>Automated customer document delivery with RPA</h3>
+              <p class="summary">A Power Automate workflow that prepared and sent client-specific financial documents, replacing an outsourced service and saving ~USD 14K/year.</p>
+              <div class="meta">
+                <div class="tags" aria-label="Tags">
+                  <span class="tag">Automation</span><span class="tag">Process Improvement</span><span class="tag">Business Impact</span>
+                </div>
+                <button class="like" type="button" aria-label="Like this project" aria-pressed="false">
+                  <span class="heart" aria-hidden="true">♡</span><span class="count">0</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card nlp-card" data-likes="0">
+          <button class="card-open" type="button" data-dialog="project-six-dialog" aria-label="Open details for Sentiment and entity analysis of the PS5 launch on YouTube"></button>
+          <div class="card-overview">
+            <div class="card-copy">
+              <span class="project-type">Natural language processing</span>
+              <h3>Sentiment &amp; entity analysis of the PS5 launch on YouTube</h3>
+              <p class="summary">Identifying public perception and competitor mentions in YouTube comments about the PS5 launch.</p>
+              <div class="meta">
+                <div class="tags" aria-label="Tags">
+                  <span class="tag">Applied AI</span><span class="tag">NLP</span><span class="tag">Fine-tuning</span><span class="tag">API</span>
                 </div>
                 <button class="like" type="button" aria-label="Like this project" aria-pressed="false">
                   <span class="heart" aria-hidden="true">♡</span><span class="count">0</span>
@@ -92,7 +193,7 @@
           </div>
         </article>
       </div>
-      <p class="sr-only" id="project-count" aria-live="polite">2 projects shown</p>
+      <p class="sr-only" id="project-count" aria-live="polite">7 projects shown</p>
     </section>
 
     <dialog class="project-dialog" id="project-one-dialog" aria-labelledby="project-one-title">
@@ -101,16 +202,22 @@
           <div>
             <span class="project-type">Optimization</span>
             <h3 id="project-one-title">Evolutionary computation for optimizing distribution systems</h3>
-            <p class="dialog-summary">A genetic search system that finds resilient, lower-cost distribution layouts across complex operational constraints.</p>
-            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">AI</span><span class="tag">Optimization</span><span class="tag">Python</span></div>
+            <p class="dialog-summary">A genetic algorithm that optimizes distribution layouts to reduce delivery costs under real-world constraints.</p>
+            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">Applied AI</span><span class="tag">Optimization</span><span class="tag">Genetic Algorithms</span><span class="tag">Business Impact</span></div>
           </div>
           <button class="dialog-close" type="button" aria-label="Close project details">×</button>
         </div>
-        <div class="detail-grid">
-          <div class="detail-block"><h4>Goal</h4><p>Minimize delivery cost by relocating assets to distribution points.</p></div>
-          <div class="detail-block"><h4>Challenges</h4><ul><li>A large permutation search space makes exact methods impractical on realistic instances</li><li>Individuals have permutable characteristics</li><li>Relocations must remain realistically constrained</li></ul></div>
-          <div class="detail-block"><h4>Approach</h4><ul><li>Stochastic approximation with a genetic algorithm</li><li>Initialization, crossover and mutation operators adapted to the problem constraints</li></ul></div>
-          <div class="detail-block"><h4>Results</h4><ul><li>Three times lower delivery cost than traditional methods while respecting relocation constraints</li><li>A robust, effective and flexible method for resource allocation</li></ul></div>
+        <div class="ga-dialog-body">
+          <div class="detail-grid">
+            <div class="detail-block"><h4>Goal</h4><p>Minimize delivery cost by relocating assets to distribution points.</p></div>
+            <div class="detail-block"><h4>Challenges</h4><ul><li>A large permutation search space makes exact methods impractical on realistic instances</li><li>Individuals have permutable characteristics</li><li>Relocations must remain realistically constrained</li></ul></div>
+            <div class="detail-block"><h4>Approach</h4><ul><li>Stochastic approximation with a genetic algorithm</li><li>Initialization, crossover and mutation operators adapted to the problem constraints</li></ul></div>
+            <div class="detail-block"><h4>Results</h4><ul><li>Three times lower delivery cost than traditional methods while respecting relocation constraints</li><li>A robust, effective and flexible method for resource allocation</li></ul></div>
+          </div>
+          <figure class="ga-visual">
+            <img src="/src/assets/geneticalgo/process_evolution-1.png" alt="Representation of the evolution process of the proposed genetic algorithm">
+            <figcaption>Representation of the evolution process of the proposed Genetic Algorithm</figcaption>
+          </figure>
         </div>
       </div>
     </dialog>
@@ -120,9 +227,9 @@
         <div class="dialog-top">
           <div>
             <span class="project-type">Graph data</span>
-            <h3 id="project-two-title">NoSQL Graph Analytics for E-commerce Behavior</h3>
+            <h3 id="project-two-title">NoSQL Graph analytics for e-commerce behavior</h3>
             <p class="dialog-summary">Mapping customer-product relationships to reveal purchasing patterns that tables tend to hide.</p>
-            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">Neo4j</span><span class="tag">Graph Data</span><span class="tag">Analytics</span></div>
+            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">Graph Analytics</span><span class="tag">Neo4j</span><span class="tag">Business Analytics</span></div>
           </div>
           <button class="dialog-close" type="button" aria-label="Close project details">×</button>
         </div>
@@ -131,6 +238,160 @@
           <div class="detail-block"><h4>Challenges</h4><ul><li>User journeys do not map cleanly to relational schemas</li><li>Session context and timestamps must remain accurate for funnels and orders</li></ul></div>
           <div class="detail-block"><h4>Approach</h4><ul><li>Neo4j graph model</li><li>Analytical Cypher queries</li></ul></div>
           <div class="detail-block"><h4>Results</h4><ul><li>Built a graph spanning users, sessions, products, brands and categories</li><li>Delivered funnel, basket, price and session insights</li><li>Indexes improved query plans and reduced database work</li></ul></div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="project-dialog" id="project-three-dialog" aria-labelledby="project-three-title">
+      <div class="dialog-inner">
+        <div class="dialog-top">
+          <div>
+            <span class="project-type">Computer vision</span>
+            <h3 id="project-three-title">3D Reconstruction with Structure from Motion</h3>
+            <p class="dialog-summary">A technical presentation on SfM Revisited, connecting feature matching, camera pose estimation, triangulation and bundle adjustment to a practical reconstruction of Statua La Desolazione in Parco Ciani.</p>
+            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">Computer Vision</span><span class="tag">3D Reconstruction</span><span class="tag">Image Processing</span></div>
+          </div>
+          <button class="dialog-close" type="button" aria-label="Close project details">×</button>
+        </div>
+        <div class="sfm-dialog-body">
+          <div class="detail-grid">
+            <div class="detail-block"><h4>Goal</h4><p>Understand and explain the Structure from Motion pipeline from SfM Revisited, then connect the theory to an observed 3D reconstruction workflow.</p></div>
+            <div class="detail-block"><h4>Technical Focus</h4><ul><li>Feature detection and matching</li><li>Camera pose estimation, triangulation and bundle adjustment</li><li>Geometry-based 3D reconstruction</li></ul></div>
+            <div class="detail-block"><h4>Benefits</h4><ul><li>Efficient reconstruction for modest image collections</li><li>No model training or generative AI</li><li>Geometry-based, reproducible results grounded in observed image features</li></ul></div>
+            <div class="detail-block"><h4>Applied Case</h4><p>Reconstruction of Statua La Desolazione in Parco Ciani, used to observe how theoretical stages appear in practical reconstruction outputs.</p></div>
+            <div class="detail-block"><h4>Outcome</h4><p>Delivered a class presentation that made the SfM pipeline visually understandable, from image features to the final reconstructed structure.</p></div>
+          </div>
+          <div class="image-carousel" data-carousel>
+            <button class="carousel-arrow carousel-prev" type="button" aria-label="Show previous Structure from Motion image">‹</button>
+            <figure class="carousel-slide is-active">
+              <img src="/src/assets/sfm/SfM_Revisited-1.png" alt="Final Structure from Motion reconstruction of Statua La Desolazione">
+            </figure>
+            <figure class="carousel-slide">
+              <img src="/src/assets/sfm/SfM_Revisited-2.png" alt="Structure from Motion process steps from images to reconstruction">
+            </figure>
+            <button class="carousel-arrow carousel-next" type="button" aria-label="Show next Structure from Motion image">›</button>
+            <span class="carousel-count" aria-live="polite">1 / 2</span>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="project-dialog" id="project-four-dialog" aria-labelledby="project-four-title">
+      <div class="dialog-inner">
+        <div class="dialog-top">
+          <div>
+            <span class="project-type">Quality analytics</span>
+            <h3 id="project-four-title">Predicting &amp; explaining textile rejects</h3>
+            <p class="dialog-summary">Most production records have no rejected fabric, but occasional failures can cause significant losses. This project identifies high-risk production conditions and explains the factors associated with reject occurrence and severity.</p>
+            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">Machine Learning</span><span class="tag">Statistical Modeling</span><span class="tag">Quality Analytics</span><span class="tag">Business Impact</span></div>
+          </div>
+          <button class="dialog-close" type="button" aria-label="Close project details">×</button>
+        </div>
+
+        <section class="model-comparison" aria-labelledby="model-comparison-title">
+          <h4 id="model-comparison-title">Model comparison</h4>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th scope="col">Model</th><th scope="col">Test RMSE ↓</th><th scope="col">Large-reject detection</th><th scope="col">Risk ranking</th><th scope="col">Interpretability</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Tweedie GLM</th><td>~1.19</td><td>❌ None detected</td><td>✅ Good</td><td>✅✅ High</td></tr>
+                <tr class="preferred-model"><th scope="row">Two-stage GLM<br><span>Logistic + Gamma</span></th><td>~1.18</td><td>❌ None detected</td><td>✅✅ Very good</td><td>✅✅ High</td></tr>
+                <tr><th scope="row">XGBoost</th><td>~1.27</td><td>⚠️ Very weak (~3% recall)</td><td>⚠️ Moderate</td><td>❌ Low</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="metric-notes">
+            <p><strong>Test RMSE</strong> Prediction error in rejected kilograms; lower is better, with a stronger penalty for large errors.</p>
+            <p><strong>Large-reject detection</strong> Ability to identify losses greater than 3 kg.</p>
+            <p><strong>Risk ranking</strong> Whether records classified as higher risk have higher average losses.</p>
+            <p><strong>Interpretability</strong> How easily results can support production decisions.</p>
+          </div>
+        </section>
+
+        <div class="detail-grid textile-details">
+          <div class="detail-block"><h4>Goal</h4><p>Identify which adjustable production settings and fixed product characteristics are associated with rejects, and determine whether reject occurrence and severity have different causes.</p></div>
+          <div class="detail-block"><h4>Challenges</h4><ul><li>Highly imbalanced target with rare but severe losses (zero-inflated, heavy-tailed)</li><li>Different mechanisms govern reject occurrence and reject severity</li><li>Strong requirement for interpretability and decision support</li></ul></div>
+          <div class="detail-block"><h4>Approach</h4><p>Compared statistical models for different data distributions and used XGBoost to test nonlinear relationships. The selected two-stage model estimates reject probability with Logistic Regression and severity with Gamma Regression.</p></div>
+          <div class="detail-block"><h4>Key Findings</h4><ul><li>A second fabric loop was associated with ~2.2× higher reject odds</li><li>Additional yarn loops were associated with ~1.7× higher reject odds</li><li>Fabric construction and composition had a stronger effect on loss severity</li><li>The highest-risk group had ~2.6× the average loss</li><li>Catastrophic losses are largely driven by latent factors not captured in standard process data</li></ul></div>
+          <div class="detail-block"><h4>Business Value</h4><ul><li>Prioritizes production records for inspection and monitoring</li><li>Identifies settings and product characteristics associated with quality risk</li><li>Separates prevention factors (affect whether a reject occurs) from loss-containment factors (affect how severe the loss becomes after a reject occurs)</li><li>Shows which additional data could help explain extreme losses</li></ul></div>
+          <div class="detail-block"><h4>Source</h4><p>Review the complete analysis, modeling decisions and notebook on <a class="project-source" href="https://github.com/jimenatagle/textile_quality_rejects" target="_blank" rel="noreferrer">GitHub ↗</a></p></div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="project-dialog" id="project-five-dialog" aria-labelledby="project-five-title">
+      <div class="dialog-inner">
+        <div class="dialog-top">
+          <div>
+            <span class="project-type">Process automation</span>
+            <h3 id="project-five-title">Automated customer document delivery with RPA</h3>
+            <p class="dialog-summary">A Power Automate workflow that prepared and sent client-specific financial documents, replacing an outsourced service and saving ~USD 14K/year.</p>
+            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">Automation</span><span class="tag">Process Improvement</span><span class="tag">Business Impact</span></div>
+          </div>
+          <button class="dialog-close" type="button" aria-label="Close project details">×</button>
+        </div>
+
+        <figure class="rpa-workflow">
+          <img src="/src/assets/rpa/document-delivery-workflow.png" alt="Workflow showing a manual start, client rules, document validation, email delivery and status logging">
+        </figure>
+
+        <div class="detail-grid rpa-details">
+          <div class="detail-block"><h4>Goal</h4><p>Automate the preparation and delivery of invoices, purchase orders and other client-required documents while reducing work performed by an external provider.</p></div>
+          <div class="detail-block"><h4>Challenges</h4><ul><li>Each client required a different combination of documents</li><li>Purchase orders had to follow specific folder, filename and date conventions</li><li>Document preparation involved Finance, Sales and outsourced Customer Operations teams across multiple national branches</li><li>Special client cases remained outside the automation scope</li></ul></div>
+          <div class="detail-block"><h4>Approach</h4><ul><li>Built the company’s first RPA workflow of this type using Power Automate, with a human-in-the-loop starting step</li><li>Implemented the solution in two phases</li></ul></div>
+          <div class="detail-block"><h4>Business Value</h4><ul><li>~USD 14K/year in savings by replacing an outsourced document-delivery service</li><li>Standardized document handling across national branches</li></ul></div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="project-dialog" id="project-six-dialog" aria-labelledby="project-six-title">
+      <div class="dialog-inner">
+        <div class="dialog-top">
+          <div>
+            <span class="project-type">Natural language processing</span>
+            <h3 id="project-six-title">Sentiment &amp; entity analysis of the PS5 launch on YouTube</h3>
+            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">Applied AI</span><span class="tag">NLP</span><span class="tag">Fine-tuning</span><span class="tag">API</span></div>
+          </div>
+          <button class="dialog-close" type="button" aria-label="Close project details">×</button>
+        </div>
+
+        <div class="ps5-dialog-body">
+          <div class="detail-grid">
+            <div class="detail-block"><h4>Goal</h4><p>Identify public perception and surface competitor mentions in YouTube comments.</p></div>
+            <div class="detail-block"><h4>Challenges</h4><ul><li>Noisy, real-time user text requiring language detection and thorough cleaning</li><li>Limited labeled data; lexicon-based methods underperformed in this domain</li></ul></div>
+            <div class="detail-block"><h4>Approach</h4><ul><li>Collect comments via API, detect language and clean the text</li><li>Evaluate linear SVM, VADER/AFINN, custom models and fine-tuning</li><li>Run NER to identify brand and competitor mentions</li></ul></div>
+          </div>
+          <figure class="ps5-visual">
+            <img src="/src/assets/ps5/coments.png" alt="Sentiment and entity analysis of comments about the PS5 launch">
+          </figure>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="project-dialog" id="project-seven-dialog" aria-labelledby="project-seven-title">
+      <div class="dialog-inner">
+        <div class="dialog-top">
+          <div>
+            <span class="project-type">Fraud analytics</span>
+            <h3 id="project-seven-title">Temporal &amp; network analytics for fraud detection</h3>
+            <p class="dialog-summary">Detecting suspicious financial accounts by combining time-series behavior with transaction-network dependencies.</p>
+            <div class="tags dialog-tags" aria-label="Tags"><span class="tag">Machine Learning</span><span class="tag">Graph Analytics</span><span class="tag">Anomaly Detection</span><span class="tag">Time Series</span></div>
+          </div>
+          <button class="dialog-close" type="button" aria-label="Close project details">×</button>
+        </div>
+
+        <div class="fraud-dialog-body">
+          <div class="detail-grid">
+            <div class="detail-block"><h4>Goal</h4><p>Identify unusual account behavior and relationships that may indicate fraud.</p></div>
+            <div class="detail-block"><h4>Challenges</h4><ul><li>Separate trends and seasonality from anomalous behavior</li><li>Model dependencies across many interacting accounts</li><li>Handle highly imbalanced fraud labels</li></ul></div>
+            <div class="detail-block"><h4>Approach</h4><ul><li>Decompose daily account activity into trend, seasonality and residuals</li><li>Estimate a sparse precision matrix from standardized residuals, treating observations as IID</li><li>Use partial correlations to measure relationships between two accounts while controlling for all others</li><li>Compare supervised Random Forest classification with unsupervised Isolation Forest anomaly detection</li></ul></div>
+          </div>
+          <figure class="fraud-visual">
+            <img src="/src/assets/fraud/most-volatile-account-decomposition.png" alt="Daily net change and residuals for the most volatile financial account">
+            <figcaption>Most volatile account: daily net change before and after time-series decomposition.</figcaption>
+          </figure>
         </div>
       </div>
     </dialog>

@@ -2,11 +2,54 @@ import { addLike, fetchLikes, isFirebaseConfigured } from "./firebase.js";
 
 const root = document.documentElement;
 const themeButton = document.querySelector(".theme");
-const filterButtons = [...document.querySelectorAll(".chip")];
-const cards = [...document.querySelectorAll(".card")];
+const projectGrid = document.querySelector(".project-grid");
+const projectOrder = [
+  "project-one-dialog",
+  "project-four-dialog",
+  "project-three-dialog",
+  "project-seven-dialog",
+  "project-two-dialog",
+  "project-five-dialog",
+  "project-six-dialog",
+];
+
+projectOrder.forEach((dialogId) => {
+  const card = projectGrid.querySelector(`[data-dialog="${dialogId}"]`).closest(".card");
+  projectGrid.append(card);
+});
+
+const cards = [...projectGrid.querySelectorAll(".card")];
 const likedProjects = new Set(JSON.parse(localStorage.getItem("likedProjects") || "[]"));
 
 const toProjectId = (title) => title.toLowerCase().replace(/\s+/g, "-");
+const normalizeTag = (tag) => tag.trim().toLowerCase();
+
+const tagTones = {
+  "applied ai": "applied-ai",
+  "optimization": "optimization",
+  "genetic algorithms": "optimization",
+  "computer vision": "vision",
+  "3d reconstruction": "vision",
+  "image processing": "vision",
+  "machine learning": "machine-learning",
+  "statistical modeling": "statistical",
+  "quality analytics": "statistical",
+  "graph analytics": "graph",
+  "neo4j": "graph",
+  "anomaly detection": "anomaly",
+  "time series": "time-series",
+  "automation": "automation",
+  "process improvement": "automation",
+  "business impact": "business-impact",
+  "business analytics": "business-analytics",
+  "nlp": "nlp",
+  "fine-tuning": "nlp",
+  "api": "api",
+};
+
+document.querySelectorAll(".tag").forEach((tag) => {
+  tag.dataset.tone = tagTones[normalizeTag(tag.textContent)] || "blue";
+});
 
 themeButton.addEventListener("click", () => {
   const dark = root.dataset.theme !== "dark";
@@ -14,17 +57,77 @@ themeButton.addEventListener("click", () => {
   themeButton.setAttribute("aria-label", `Switch to ${dark ? "light" : "dark"} theme`);
 });
 
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const filter = button.dataset.filter;
-    filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-    cards.forEach((card) => {
-      const match = filter === "all" || card.dataset.tags.includes(filter);
-      card.hidden = !match;
-    });
-    const shown = cards.filter((card) => !card.hidden).length;
-    document.querySelector("#project-count").textContent = `${shown} project${shown === 1 ? "" : "s"} shown`;
+const filterRoot = document.querySelector(".filters");
+const filterToggle = filterRoot.querySelector(".filter-toggle");
+const filterMenu = filterRoot.querySelector(".filter-menu");
+const filterOptions = filterRoot.querySelector(".filter-options");
+const filterCount = filterRoot.querySelector(".filter-count");
+
+cards.forEach((card) => {
+  card.filterTags = [...card.querySelectorAll(".card-copy .tag")].map((tag) => normalizeTag(tag.textContent));
+});
+
+const filterCategories = [
+  "applied ai",
+  "optimization",
+  "computer vision",
+  "machine learning",
+  "graph analytics",
+  "automation",
+  "business impact",
+];
+
+filterCategories.forEach((tag, index) => {
+  const label = document.createElement("label");
+  label.className = "filter-option";
+  label.innerHTML = `<input type="checkbox" value="${tag}" id="filter-${index}"><span class="filter-swatch" data-tone="${tagTones[tag] || "blue"}" aria-hidden="true"></span><span>${tag}</span>`;
+  filterOptions.append(label);
+});
+
+const filterCheckboxes = [...filterOptions.querySelectorAll("input")];
+
+function applyFilters() {
+  const selected = new Set(filterCheckboxes.filter((input) => input.checked).map((input) => input.value));
+  cards.forEach((card) => {
+    card.hidden = selected.size > 0 && !card.filterTags.some((tag) => selected.has(tag));
   });
+
+  const shown = cards.filter((card) => !card.hidden).length;
+  filterCount.textContent = selected.size === 0 || selected.size === filterCategories.length ? "All" : String(selected.size);
+  document.querySelector("#project-count").textContent = `${shown} project${shown === 1 ? "" : "s"} shown`;
+}
+
+filterToggle.addEventListener("click", () => {
+  const willOpen = filterMenu.hidden;
+  filterMenu.hidden = !willOpen;
+  filterToggle.setAttribute("aria-expanded", String(willOpen));
+});
+
+filterOptions.addEventListener("change", applyFilters);
+
+filterRoot.querySelector('[data-filter-action="all"]').addEventListener("click", () => {
+  filterCheckboxes.forEach((input) => { input.checked = true; });
+  applyFilters();
+});
+
+filterRoot.querySelector('[data-filter-action="clear"]').addEventListener("click", () => {
+  filterCheckboxes.forEach((input) => { input.checked = false; });
+  applyFilters();
+});
+
+document.addEventListener("click", (event) => {
+  if (!filterMenu.hidden && !filterRoot.contains(event.target)) {
+    filterMenu.hidden = true;
+    filterToggle.setAttribute("aria-expanded", "false");
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !filterMenu.hidden) {
+    filterMenu.hidden = true;
+    filterToggle.setAttribute("aria-expanded", "false");
+    filterToggle.focus();
+  }
 });
 
 document.querySelectorAll(".card-open").forEach((button) => {
@@ -38,6 +141,26 @@ document.querySelectorAll(".project-dialog").forEach((dialog) => {
   dialog.addEventListener("click", (event) => {
     if (event.target === dialog) dialog.close();
   });
+});
+
+document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+  const slides = [...carousel.querySelectorAll(".carousel-slide")];
+  const count = carousel.querySelector(".carousel-count");
+  let activeIndex = slides.findIndex((slide) => slide.classList.contains("is-active"));
+
+  if (activeIndex < 0) activeIndex = 0;
+
+  function showSlide(index) {
+    activeIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("is-active", slideIndex === activeIndex);
+    });
+    count.textContent = `${activeIndex + 1} / ${slides.length}`;
+  }
+
+  carousel.querySelector(".carousel-prev").addEventListener("click", () => showSlide(activeIndex - 1));
+  carousel.querySelector(".carousel-next").addEventListener("click", () => showSlide(activeIndex + 1));
+  showSlide(activeIndex);
 });
 
 function showLiked(button, liked) {
